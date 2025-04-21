@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Objects;
+
 abstract class Produto {
     private String nome;
     private double preco;
@@ -55,7 +58,24 @@ class Eletronico extends Produto {
 }
 
 public class Main {
+
+    public void imprimirProdutos(ArrayList<Produto> produtos) {
+        for(Produto produto : produtos) {
+            if(produto instanceof Livro) {
+                Livro livro = (Livro) produto;
+                System.out.println("Livro: " + livro.getNome() + "\nAutor: " + livro.getAutor() + "\nNº de páginas: " + livro.getPaginas() + "\nPreço: " + livro.getPreco());
+            } else if(produto instanceof Eletronico) {
+                Eletronico eletronico = (Eletronico) produto;
+                System.out.println("Nome: " + eletronico.getNome() + "\nFábrica: " + eletronico.getFabrica() + "\nCategoria: " + eletronico.getCategoria() + "\nPreço: " + eletronico.getPreco());
+            }
+            System.out.println();
+        }
+
+    }
+
     public static void main(String[] args) {
+        var produtos = new ArrayList<Produto>();
+
 
     }
 }
